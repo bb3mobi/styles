@@ -12,6 +12,7 @@
 	<div class="post <!-- IF topic_review_row.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF --><!-- IF topic_review_row.POST_ID == REPORTED_POST_ID --> bg3<!-- ENDIF -->" id="pr{topic_review_row.POST_ID}">
 	<!-- ENDIF -->
 		<i><a href="#pr{topic_review_row.POST_ID}">{topic_review_row.POST_SUBJECT}</a></i>
+		<!-- EVENT posting_topic_review_row_post_details_before -->
 		<p class="author"><b>{topic_review_row.POST_AUTHOR_FULL}</b> &raquo; {topic_review_row.POST_DATE}
 			<!-- IF topic_review_row.U_MCP_DETAILS -->
 			<a href="{topic_review_row.U_MCP_DETAILS}" class="rightside button"><span>{L_POST_DETAILS}</span></a><!-- ENDIF -->
@@ -19,6 +20,7 @@
 			<a href="#postingbox" onclick="addquote({topic_review_row.POST_ID}, '{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}');" title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" class="rightside button"><span>{L_QUOTE}</span></a>
 			<!-- ENDIF -->
 		</p>
+		<!-- EVENT posting_topic_review_row_post_details_after -->
 		<div class="content">{topic_review_row.MESSAGE}</div>
 		<!-- IF topic_review_row.S_HAS_ATTACHMENTS -->
 		<div class="attachbox">{L_ATTACHMENTS}

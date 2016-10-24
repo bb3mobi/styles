@@ -1,7 +1,7 @@
 <!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
 <!-- IF S_SHOW_TOPIC_ICONS or S_SHOW_PM_ICONS -->
 <div class="post bg1 small-icon">{L_ICON}{L_COLON} <input type="radio" name="icon" value="0" checked="checked" /> <!-- IF S_SHOW_TOPIC_ICONS -->{L_NO_TOPIC_ICON}<!-- ELSE -->{L_NO_PM_ICON}<!-- ENDIF --><br />
-<!-- BEGIN topic_icon --><input type="radio" name="icon" id="icon-{topic_icon.ICON_ID}" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} /><img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="" title="" /> <!-- END topic_icon -->
+<!-- BEGIN topic_icon --><input type="radio" name="icon" id="icon-{topic_icon.ICON_ID}" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} /><img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_NAME}" title="" /> <!-- END topic_icon -->
 </div>
 <!-- ENDIF -->
 <!-- IF not S_PRIVMSGS and S_DISPLAY_USERNAME -->
@@ -11,7 +11,10 @@
 <!-- EVENT posting_editor_subject_before -->
 <!-- IF S_POST_ACTION or S_PRIVMSGS or S_EDIT_DRAFT -->
 <div class="post bg1">{L_SUBJECT}{L_COLON}<br />
-<input type="text" name="subject" id="subject" maxlength="<!-- IF S_NEW_MESSAGE -->120<!-- ELSE -->124<!-- ENDIF -->" value="{SUBJECT}{DRAFT_SUBJECT}" class="inputbox" /></div>
+<!-- EVENT posting_editor_subject_prepend -->
+<input type="text" name="subject" id="subject" maxlength="<!-- IF S_NEW_MESSAGE -->120<!-- ELSE -->124<!-- ENDIF -->" value="{SUBJECT}{DRAFT_SUBJECT}" class="inputbox" />
+<!-- EVENT posting_editor_subject_append -->
+</div>
 <!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
 	<!-- DEFINE $CAPTCHA_TAB_INDEX = 3 -->
 	<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
@@ -75,7 +78,7 @@
 <!-- BEGIN topic_type --><input type="radio" name="topic_type" value="{topic_type.VALUE}"{topic_type.S_CHECKED} />{topic_type.L_TOPIC_TYPE} <!-- END topic_type --></p>
 <!-- ENDIF -->
 <!-- IF S_TOPIC_TYPE_ANNOUNCE or S_TOPIC_TYPE_STICKY -->
-<p><b>{L_STICK_TOPIC_FOR}{L_COLON}</b><br /><input type="number" min="0" max="999" name="topic_time_limit" size="3" maxlength="3" value="{TOPIC_TIME_LIMIT}" class="inputbox autowidth" /> {L_DAYS}<br /><i>{L_STICK_TOPIC_FOR_EXPLAIN}</i></p>
+<p><b>{L_STICK_TOPIC_FOR}{L_COLON}</b><br /><input type="number" min="0" max="999" name="topic_time_limit" value="{TOPIC_TIME_LIMIT}" class="inputbox autowidth" /> {L_DAYS}<br /><i>{L_STICK_TOPIC_FOR_EXPLAIN}</i></p>
 <!-- ENDIF -->
 <!-- IF S_SOFTDELETE_ALLOWED or S_DELETE_ALLOWED -->
 <hr class="dashed" />

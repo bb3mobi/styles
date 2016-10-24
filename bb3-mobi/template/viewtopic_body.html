@@ -1,5 +1,6 @@
 <!-- INCLUDE overall_header.html -->
 <h2><!-- EVENT viewtopic_topic_title_prepend -->{TOPIC_TITLE}<!-- EVENT viewtopic_topic_title_append --></h2>
+<!-- EVENT viewtopic_topic_title_after -->
 <!-- IF MODERATORS -->
 <p><b><!-- IF S_SINGLE_MODERATOR -->{L_MODERATOR}<!-- ELSE -->{L_MODERATORS}<!-- ENDIF -->{L_COLON}</b> {MODERATORS}</p>
 <!-- ENDIF -->
@@ -33,7 +34,7 @@
 <div class="header"><!-- EVENT viewtopic_body_poll_question_prepend -->{POLL_QUESTION}<!-- EVENT viewtopic_body_poll_question_append --></div>
 <i>{L_POLL_LENGTH}<!-- IF S_CAN_VOTE and L_POLL_LENGTH --><br /><!-- ENDIF --><!-- IF S_CAN_VOTE --><span>{L_MAX_VOTES}</span><!-- ENDIF --></i>
 <!-- BEGIN poll_option -->
-<div class="row">
+<div class="row<!-- IF poll_option.POLL_OPTION_VOTED --> voted<!-- ENDIF --><!-- IF poll_option.POLL_OPTION_MOST_VOTES --> most-votes<!-- ENDIF -->"<!-- IF poll_option.POLL_OPTION_VOTED --> title="{L_POLL_VOTED_OPTION}"<!-- ENDIF --> data-alt-text="{L_POLL_VOTED_OPTION}" data-poll-option-id="{poll_option.POLL_OPTION_ID}">
 <div class="inner">
 <!-- EVENT viewtopic_body_poll_option_before -->
 <!-- IF S_CAN_VOTE -->
@@ -101,6 +102,7 @@
 			</p>
 			<!-- EVENT viewtopic_body_postrow_post_details_after -->
 		</div>
+		<!-- EVENT viewtopic_body_post_subject_before -->
 		<!-- IF postrow.S_POST_UNAPPROVED -->
 		<form method="post" class="mcp_approve" action="{postrow.U_APPROVE_ACTION}">
 			<p class="post-notice unapproved">
@@ -115,7 +117,8 @@
 		<form method="post" class="mcp_approve" action="{postrow.U_APPROVE_ACTION}">
 			<p class="post-notice deleted">
 				<b>{L_POST_DELETED_ACTION}</b>
-				<input class="button2" type="submit" value="{L_DELETE}" name="action[disapprove]" />
+				<!-- IF postrow.S_DELETE_PERMANENT -->
+				<input class="button2" type="submit" value="{L_DELETE}" name="action[delete]" /><!-- ENDIF -->
 				<input class="button1" type="submit" value="{L_RESTORE}" name="action[restore]" />
 				<input type="hidden" name="post_id_list[]" value="{postrow.POST_ID}" />
 				{S_FORM_TOKEN}
@@ -159,7 +162,9 @@
 		<!-- IF postrow.SIGNATURE --><hr />{postrow.SIGNATURE}<!-- ENDIF -->
 		<!-- EVENT viewtopic_body_postrow_post_content_footer -->
 	<!-- ENDIF -->
+	<!-- EVENT viewtopic_body_postrow_back2top_before -->
 	</div>
+	<!-- EVENT viewtopic_body_postrow_back2top_after -->
 </div>
 <!-- EVENT viewtopic_body_postrow_post_after -->
 <!-- END postrow -->

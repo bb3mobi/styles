@@ -26,7 +26,7 @@
 <div class="panel">
 <div id="display-panel" class="panel bg3" role="tabpanel">
 	<p>{L_POSTS_PER_PAGE}{L_COLON}<br /><i>{L_POSTS_PER_PAGE_EXPLAIN}</i><br />
-	<input class="inputbox autowidth" type="number" min="0" name="posts_per_page" id="posts_per_page" size="6" value="{POSTS_PER_PAGE}" /></p>
+	<input class="inputbox autowidth" type="number" min="0" max="999999" name="posts_per_page" id="posts_per_page" value="{POSTS_PER_PAGE}" /></p>
 	<p>{L_DISPLAY_POSTS}{L_COLON}<br />
 	{S_SELECT_SORT_DAYS} {S_SELECT_SORT_KEY} {S_SELECT_SORT_DIR} <input type="submit" name="sort" value="{L_GO}" class="button2" /></p>
 </div>
@@ -50,7 +50,7 @@
 <div id="merge-panel" class="panel bg3" role="tabpanel">
 	<i>{L_MERGE_TOPIC_EXPLAIN}</i>
 	<p>{L_MERGE_TOPIC_ID}{L_COLON}</p>
-	<input class="inputbox autowidth" type="number" min="0" size="6" name="to_topic_id" id="to_topic_id" value="{TO_TOPIC_ID}" />
+	<input class="inputbox autowidth" type="number" min="0" max="9999999999" name="to_topic_id" id="to_topic_id" value="{TO_TOPIC_ID}" />
 	<a href="{U_SELECT_TOPIC}" >{L_SELECT_TOPIC}</a>
 		<!-- IF TO_TOPIC_INFO --><br />{TO_TOPIC_INFO}<!-- ENDIF -->
 	</p>
@@ -64,6 +64,7 @@
 <div class="post <!-- IF postrow.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF -->" id="pr{postrow.POST_ID}">
 <i><a href="{postrow.U_POST_DETAILS}">{postrow.POST_SUBJECT}</a></i>
 <div class="inner">
+<!-- EVENT mcp_topic_postrow_post_details_before -->
 <p class="author">
 <input type="checkbox" id="post_id_list_select_{postrow.POST_ID}" name="post_id_list[]" value="{postrow.POST_ID}"<!-- IF postrow.S_CHECKED --> checked="checked"<!-- ENDIF --> />
 <b>{postrow.POST_AUTHOR_FULL}</b> &laquo; {postrow.POST_DATE}<!-- IF postrow.U_MCP_DETAILS --> [ <a href="{postrow.U_MCP_DETAILS}">{L_POST_DETAILS}</a> ]<!-- ENDIF -->
@@ -73,6 +74,7 @@
 <!-- IF postrow.S_POST_REPORTED --><a href="{postrow.U_MCP_REPORT}" class="button"><span>!</span></a><!-- ENDIF -->
 <a href="{postrow.U_POST_DETAILS}" title="{L_POST_DETAILS}" class="button"><span>i</span></a></span>
 </p>
+<!-- EVENT mcp_topic_postrow_post_details_after -->
 </div>
 <div class="content" id="message_{postrow.POST_ID}">{postrow.MESSAGE}</div>
 <!-- IF postrow.S_HAS_ATTACHMENTS -->

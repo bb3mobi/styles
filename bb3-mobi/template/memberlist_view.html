@@ -21,15 +21,18 @@
 <!-- IF RANK_IMG --><p>{RANK_IMG}</p><!-- ENDIF -->
 <!-- IF S_USER_INACTIVE --><p><b>{L_USER_IS_INACTIVE}{L_COLON}</b> {USER_INACTIVE_REASON}</p><!-- ENDIF -->
 <!-- IF AGE !== '' --><p><b>{L_AGE}{L_COLON}</b> {AGE}</p><!-- ENDIF -->
+<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
 <!-- BEGIN custom_fields -->
 <!-- IF not custom_fields.S_PROFILE_CONTACT -->
 <p><b>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</b> {custom_fields.PROFILE_FIELD_VALUE}</p>
 <!-- ENDIF -->
 <!-- END custom_fields -->
+<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
 <!-- IF SIGNATURE --><div class="post bg3"><b>{L_SIGNATURE}{L_COLON}</b><br />{SIGNATURE}</div><!-- ENDIF -->
 </div>
 
 <div class="panel">
+<!-- EVENT memberlist_view_zebra_before -->
 <!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
 <!-- IF U_REMOVE_FRIEND -->
 <div class="row bg3"><a href="{U_REMOVE_FRIEND}">{L_REMOVE_FRIEND}</a></div>
@@ -40,6 +43,7 @@
 <!-- IF U_ADD_FOE --><div class="row bg3"><a href="{U_ADD_FOE}">{L_ADD_FOE}</a></div><!-- ENDIF -->
 <!-- ENDIF -->
 <!-- ENDIF -->
+<!-- EVENT memberlist_view_zebra_after -->
 <!-- IF U_EDIT_SELF --><div class="row bg3"><a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a></div><!-- ENDIF -->
 <!-- IF U_USER_ADMIN --><div class="row bg3"><a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a></div><!-- ENDIF -->
 <!-- IF U_USER_BAN --><div class="row bg3"><a href="{U_USER_BAN}">{L_USER_BAN}</a></div><!-- ENDIF -->
@@ -51,6 +55,7 @@
 <!-- IF U_EMAIL --><div class="row bg2"><a href="{U_EMAIL}">{L_SEND_EMAIL_USER}</a></div><!-- ENDIF -->
 <!-- IF U_PM --><div class="row bg2"><a href="{U_PM}">{L_SEND_PRIVATE_MESSAGE}</a></div><!-- ENDIF -->
 <!-- IF U_JABBER and S_JABBER_ENABLED --><div class="row bg2"><a href="{U_JABBER}" onclick="popup(this.href, 750, 320); return false;">{L_SEND_JABBER_MESSAGE}</a></div><!-- ELSEIF USER_JABBER --><div class="row bg2">{USER_JABBER}</div><!-- ENDIF -->
+<!-- EVENT memberlist_view_contact_custom_fields_before -->
 <!-- BEGIN custom_fields -->
 <!-- IF custom_fields.S_PROFILE_CONTACT -->
 <!-- IF custom_fields.PROFILE_FIELD_CONTACT -->
@@ -60,6 +65,7 @@
 <!-- ENDIF -->
 <!-- ENDIF -->
 <!-- END custom_fields -->
+<!-- EVENT memberlist_view_contact_custom_fields_after -->
 <!-- IF S_PROFILE_FIELD1 -->
 <!-- NOTE: Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field. -->
 <div class="row bg2">{PROFILE_FIELD1_VALUE}</div>

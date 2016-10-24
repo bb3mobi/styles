@@ -42,13 +42,16 @@
 <!-- ENDIF -->
 </div>
 <!-- ENDIF -->
+<!-- EVENT viewforum_body_topic_row_before -->
 <!-- BEGIN topicrow -->
 <!-- IF not topicrow.S_TOPIC_TYPE_SWITCH and not topicrow.S_FIRST_ROW --></div><!-- ENDIF -->
 <!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
 <div class="forumbg">
 <div class="header"><!-- IF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></div><!-- ENDIF -->
+<!-- EVENT viewforum_body_topicrow_row_before -->
 <div class="small-icon row<!-- IF topicrow.S_ROW_COUNT is even --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
 	<div class="inner">
+	<!-- EVENT viewforum_body_topic_row_prepend -->
 	<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT -->
 	<a href="{topicrow.U_NEWEST_POST}"><img src="{T_THEME_PATH}/images/icon_post_target_unread.gif" alt=""/></a>
 	<!-- ENDIF -->
@@ -62,12 +65,15 @@
 	<!-- IF topicrow.S_TOPIC_REPORTED -->
 	<a href="{topicrow.U_MCP_REPORT}" class="rightside"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" alt=""/></a><!-- ENDIF -->
 	<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a> <span class="posts">[<!-- IF topicrow.REPLIES -->{topicrow.REPLIES}<!-- ELSE -->1<!-- ENDIF -->]</span>
+	<!-- EVENT topiclist_row_topic_title_after -->
 	<!-- IF not S_IS_BOT -->
 	<br /><!-- IF topicrow.TOPIC_AUTHOR != topicrow.LAST_POST_AUTHOR --><span<!-- IF topicrow.TOPIC_AUTHOR_COLOUR --> style="color:{topicrow.TOPIC_AUTHOR_COLOUR}"<!-- ENDIF -->>{topicrow.TOPIC_AUTHOR}</span> / <!-- ENDIF --><span<!-- IF topicrow.LAST_POST_AUTHOR_COLOUR --> style="color:{topicrow.LAST_POST_AUTHOR_COLOUR}"<!-- ENDIF -->>{topicrow.LAST_POST_AUTHOR}</span> &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{topicrow.LAST_POST_TIME}</a>
 	<!-- ENDIF -->
 	<!-- EVENT topiclist_row_append -->
+	<!-- EVENT viewforum_body_topic_row_append -->
 	</div>
 </div>
+<!-- EVENT viewforum_body_topic_row_after -->
 <!-- IF topicrow.S_LAST_ROW -->
 </div>
 <!-- ENDIF -->

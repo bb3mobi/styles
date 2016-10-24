@@ -33,6 +33,7 @@
 	<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
 	<!-- EVENT mcp_forum_topic_title_after -->
 	<span class="posts"> [<!-- IF topicrow.REPLIES -->{topicrow.REPLIES}<!-- ELSE -->1<!-- ENDIF -->] </span>
+	<!-- EVENT topiclist_row_topic_title_after -->
 	<!-- IF not S_IS_BOT -->
 	<br /><!-- IF topicrow.TOPIC_AUTHOR != topicrow.LAST_POST_AUTHOR --><span<!-- IF topicrow.TOPIC_AUTHOR_COLOUR --> style="color:{topicrow.TOPIC_AUTHOR_COLOUR}"<!-- ENDIF -->>{topicrow.TOPIC_AUTHOR}</span> / <!-- ENDIF --><span<!-- IF topicrow.LAST_POST_AUTHOR_COLOUR --> style="color:{topicrow.LAST_POST_AUTHOR_COLOUR}"<!-- ENDIF -->>{topicrow.LAST_POST_AUTHOR}</span> &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{topicrow.LAST_POST_TIME}</a>
 	<!-- ENDIF -->

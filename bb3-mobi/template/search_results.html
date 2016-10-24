@@ -27,7 +27,9 @@
 <!-- IF searchresults.S_TOPIC_REPORTED -->
 <a href="{searchresults.U_MCP_REPORT}" class="rightside"><img src="{T_THEME_PATH}/images/icon_topic_reported.gif" alt=""/></a>
 <!-- ENDIF -->
-<a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a> <span>[{searchresults.TOPIC_REPLIES}]</span>	<!-- IF not S_IS_BOT --><br /><!-- IF searchresults.TOPIC_AUTHOR != searchresults.LAST_POST_AUTHOR --><span<!-- IF searchresults.TOPIC_AUTHOR_COLOUR --> style="color:{searchresults.TOPIC_AUTHOR_COLOUR}"<!-- ENDIF -->>{searchresults.TOPIC_AUTHOR}</span> / <!-- ENDIF -->{searchresults.LAST_POST_AUTHOR_FULL} &laquo; <a href="{searchresults.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{searchresults.LAST_POST_TIME}</a><!-- ENDIF -->
+<a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a> <span>[{searchresults.TOPIC_REPLIES}]</span>
+<!-- EVENT topiclist_row_topic_title_after -->
+<!-- IF not S_IS_BOT --><br /><!-- IF searchresults.TOPIC_AUTHOR != searchresults.LAST_POST_AUTHOR --><span<!-- IF searchresults.TOPIC_AUTHOR_COLOUR --> style="color:{searchresults.TOPIC_AUTHOR_COLOUR}"<!-- ENDIF -->>{searchresults.TOPIC_AUTHOR}</span> / <!-- ENDIF -->{searchresults.LAST_POST_AUTHOR_FULL} &laquo; <a href="{searchresults.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{searchresults.LAST_POST_TIME}</a><!-- ENDIF -->
 <p>&raquo; {L_IN} <a href="{searchresults.U_VIEW_FORUM}">{searchresults.FORUM_TITLE}</a></p>
 </div>
 <!-- EVENT topiclist_row_append -->
@@ -72,11 +74,13 @@
 <hr />
 <!-- ENDIF -->
 <!-- EVENT search_results_searchbox_after -->
-<!-- IF .pagination -->
 <div class="action-bar">
+	<!-- IF U_MARK_ALL_READ --><a href="{U_MARK_ALL_READ}" class="mark-read">{L_MARK_ALL_READ}</a> &bull;<!-- ENDIF -->
+	<!-- IF .pagination -->
 	<div class="rightside pagination">
 		<!-- INCLUDE pagination.html -->
 	</div>
+	<!-- ENDIF -->
 </div>
-<!-- ENDIF -->
+
 <!-- INCLUDE overall_footer.html -->

@@ -130,6 +130,7 @@ ul.rightside {
 .autowidth { width: auto!important; }
 .clear { display: block; clear: both; }
 .copyright, .submit-buttons, .mark { text-align: center; }
+.inactive { font-style: italic; }
 .inline-attachment { display: inline-block; }
 .attachbox { background: #fff; border: 1px dashed #C9D2D8; }
 .attachbox p { border-bottom: 1px solid #C9D2D8; }
